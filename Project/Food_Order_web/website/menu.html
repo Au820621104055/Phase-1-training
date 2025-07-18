@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu - Yummy Tummy</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background-image: url('image/menu.jpeg');
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    .menu-section {
+      padding: 40px;
+    }
+    .card img {
+      height: 150px;
+      object-fit: cover;
+    }
+    footer {
+      margin-top: 20px;
+      background-color: rgb(14, 13, 13);
+      color: white;
+      text-align: center;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark px-3">
+  <a class="navbar-brand" href="home.html">Yummy Tummy</a>
+  <span>
+    <a class="navbar-text text-white me-3" href="home.html">Logout</a>
+    <a href="cart.html" class="btn btn-warning btn-sm">View Cart</a>
+  </span>
+</nav>
+
+<div class="container menu-section">
+  <h2 class="text-center mb-4">Menu</h2>
+  <div class="row g-4">
+
+    <div class="col-md-3">
+      <div class="card">
+        <img src="image/panner.jpeg" class="card-img-top">
+        <div class="card-body">
+          <h5>Paneer Butter Masala</h5>
+          <p>₹220 | Main Course</p>
+          <button class="btn btn-success btn-sm" onclick="addToCart('Paneer Butter Masala',220)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <img src="image/dal.jpeg" class="card-img-top">
+        <div class="card-body">
+          <h5>Dal Tadka</h5>
+          <p>₹150 | Main Course</p>
+          <button class="btn btn-success btn-sm" onclick="addToCart('Dal Tadka',150)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <img src="image/biryani.jpeg" class="card-img-top">
+        <div class="card-body">
+          <h5>Chicken Biryani</h5>
+          <p>₹280 | Rice</p>
+          <button class="btn btn-success btn-sm" onclick="addToCart('Chicken Biryani',280)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <img src="image/pulao.jpeg" class="card-img-top">
+        <div class="card-body">
+          <h5>Veg Pulao</h5>
+          <p>₹180 | Rice</p>
+          <button class="btn btn-success btn-sm" onclick="addToCart('Veg Pulao',180)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <img src="image/masal-dosa.jpeg" class="card-img-top">
+        <div class="card-body">
+          <h5>Masala Dosa</h5>
+          <p>₹120 | South Indian</p>
+          <button class="btn btn-success btn-sm" onclick="addToCart('Masala Dosa',120)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <img src="image/tikka.jpeg" class="card-img-top">
+        <div class="card-body">
+          <h5>Paneer Tikka</h5>
+          <p>₹200 | Starter</p>
+          <button class="btn btn-success btn-sm" onclick="addToCart('Paneer Tikka',200)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <img src="image/lassi.jpeg" class="card-img-top">
+        <div class="card-body">
+          <h5>Sweet Lassi</h5>
+          <p>₹80 | Beverages</p>
+          <button class="btn btn-success btn-sm" onclick="addToCart('Sweet Lassi',80)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <img src="image/chai.jpeg" class="card-img-top">
+        <div class="card-body">
+          <h5>Masala Chai</h5>
+          <p>₹30 | Beverages</p>
+          <button class="btn btn-success btn-sm" onclick="addToCart('Masala Chai',30)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <img src="image/jamun.jpeg" class="card-img-top">
+        <div class="card-body">
+          <h5>Gulab Jamun</h5>
+          <p>₹90 | Dessert</p>
+          <button class="btn btn-success btn-sm" onclick="addToCart('Gulab Jamun',90)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <img src="image/rasamalai.jpeg" class="card-img-top">
+        <div class="card-body">
+          <h5>Rasmalai</h5>
+          <p>₹110 | Dessert</p>
+          <button class="btn btn-success btn-sm" onclick="addToCart('Rasmalai',110)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <img src="image/samosa.jpeg" class="card-img-top">
+        <div class="card-body">
+          <h5>Samosa</h5>
+          <p>₹25 | Snack</p>
+          <button class="btn btn-success btn-sm" onclick="addToCart('Samosa',25)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <img src="image/idli.jpeg" class="card-img-top">
+        <div class="card-body">
+          <h5>Idli</h5>
+          <p>₹50 | South Indian</p>
+          <button class="btn btn-success btn-sm" onclick="addToCart('Idli',50)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Yummy Tummy</p>
+</footer>
+
+<script>
+  function addToCart(name, price) {
+    let cart = JSON.parse(sessionStorage.getItem("cart") || "[]");
+    let found = cart.find(item => item.name === name);
+    if (found) {
+      found.qty += 1;
+    } else {
+      cart.push({ name: name, price: price, qty: 1 });
+    }
+    sessionStorage.setItem("cart", JSON.stringify(cart));
+    alert(name + " added to cart!");
+  }
+</script>
+
+</body>
+</html>
