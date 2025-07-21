@@ -31,8 +31,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Navbar -->
   <nav class="navbar navbar-dark bg-dark px-3">
     <a class="navbar-brand" href="home.html">Yummy Tummy</a>
     <span class="navbar-text text-white">Payment</span>
@@ -103,17 +101,16 @@
         total: total
       };
 
-      // Save to Admin (localStorage)
       let allOrders = JSON.parse(localStorage.getItem("orders") || "[]");
       allOrders.push(order);
       localStorage.setItem("orders", JSON.stringify(allOrders));
 
-      // Save to User (sessionStorage)
+
       let myOrders = JSON.parse(sessionStorage.getItem("myOrders") || "[]");
       myOrders.push(order);
       sessionStorage.setItem("myOrders", JSON.stringify(myOrders));
 
-      // Clear cart
+ 
       sessionStorage.removeItem("cart");
 
       alert("Payment Successful!\nOrder ID: " + orderId);
