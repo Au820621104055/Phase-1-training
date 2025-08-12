@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Booking Page";
+}
+
+@model movie
+
+<div class="container mt-4">
+    <h2>Movie Booking Form</h2>
+    <div class="card shadow-lg p-4">
+        <form asp-action="AddDB" method="post">
+            <div class="mb-3">
+                <label asp-for="name" >Name</label>
+                <input asp-for="name" class="form-control" placeholder="Enter your Name" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="gender">Gender</label>
+                <select asp-for="gender" class="form-select">
+                    <option value="">Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+                <span asp-validation-for="gender" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="dateofbirth">Date Of Birth</label>
+                <input type="date" asp-for="dateofbirth" class="form-control" placeholder="Enter your Date Of Birth" />
+                <span asp-validation-for="dateofbirth" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="age">Age</label>
+                <input asp-for="age" class="form-control" placeholder="Enter your Age" />
+                <span asp-validation-for="age" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

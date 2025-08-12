@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Movie Details";
+}
+
+@model List<movie>
+
+<div class="container mt-5">
+
+
+    <div class="text-center mb-4">
+        <h1 class="text-primary fw-bold">Movie Booking Details</h1>
+        <div class="text-end">
+            <a class="btn btn-outline-primary" asp-action="Filter">All</a>
+            <a class="btn btn-outline-success" asp-action="Filter" asp-route-gender="Male">Male</a>
+            <a class="btn btn-outline-warning" asp-action="Filter" asp-route-gender="Female">Female</a>
+        </div>
+        <hr class="w-25 mx-auto" />
+    </div>
+
+    <div class="text-center mb-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Total Audience</h5>
+                <p class="h3 text-primary">@ViewBag.TotalMovies</p>
+            </div>
+            <div class="col-md-6">
+                <h5>Average Age</h5>
+                <p class="h3 text-success">@ViewBag.AverageAge</p>
+            </div>
+        </div>
+    </div>
+  
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <table class="table table-hover table-bordered align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Date_Of_Birth</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.name</td>
+                                <td>@item.gender</td>
+                                <td>@item.age</td>
+                                <td>
+                                @item.dateofbirth
+                                </td>
+                            <td>
+                                <a href="@Url.Action("ViewDetail", "Home", new { name = item.name })"
+                                   class="btn btn-sm btn-primary">
+                                    View
+                                </a>
+                                <a href="@Url.Action("DeleteDetail", "Home", new { name = item.name })"
+                                   class="btn btn-sm btn-primary">
+                                    Delete
+                                </a>
+                            </td>
+                            </tr>
+                        }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
