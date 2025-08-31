@@ -1,0 +1,17 @@
+<h2>List of Bookings</h2>
+<table border="1" cellpadding="10">
+  <tr>
+    <th>Movie</th>
+    <th>Name</th>
+    <th>Seats</th>
+    <th>Date</th>
+    <th>Time</th>
+  </tr>
+  <tr *ngFor="let booking of bookings">
+    <td>{{ booking.movie }}</td>
+    <td>{{ booking.name }}</td>
+    <td>{{ booking.seats }}</td>
+    <td>{{ booking.date }}</td>
+    <td>{{ booking.time }}</td>
+  </tr>
+</table>
