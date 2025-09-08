@@ -1,0 +1,84 @@
+
+.container {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #343a40;
+  font-weight: 600;
+}
+
+
+.alert-info {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #055160;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+  border-radius: 8px;
+}
+
+
+.table {
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table th {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+}
+
+.table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.btn-secondary {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.9rem;
+  margin: 0 0.2rem;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+
+.btn-danger {
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.text-end h4 {
+  color: #007bff;
+  font-weight: 600;
+}
+
+.btn-success {
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}

@@ -1,0 +1,46 @@
+.restaurant-menu-page {
+  padding: 20px;
+  background: #f8f9fa; 
+  min-height: 80vh;
+  position: relative;
+}
+
+.go-cart-top {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+}
+
+.restaurant-menu-page h2 {
+  font-weight: 700;
+  color: #333;
+  margin-top: 50px;
+}
+
+.menu-list .menu-item {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.menu-list .menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.menu-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.menu-desc {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.menu-price {
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 1rem;
+}

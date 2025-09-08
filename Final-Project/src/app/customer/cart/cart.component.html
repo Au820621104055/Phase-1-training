@@ -1,0 +1,39 @@
+<div class="container mt-4">
+  <h3>Your Cart</h3>
+
+  <div *ngIf="cart.length === 0" class="alert alert-info">
+    Your cart is empty. Go add some items!
+  </div>
+
+  <table class="table table-bordered" *ngIf="cart.length > 0">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of cart; let i = index">
+        <td>{{ c.item.name }}</td>
+        <td>₹{{ c.item.price }}</td>
+        <td>
+          <button class="btn btn-sm btn-secondary" (click)="decreaseQty(i)">-</button>
+          {{ c.qty }}
+          <button class="btn btn-sm btn-secondary" (click)="increaseQty(i)">+</button>
+        </td>
+        <td>₹{{ c.item.price * c.qty }}</td>
+        <td>
+          <button class="btn btn-sm btn-danger" (click)="removeItem(i)">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="cart.length > 0" class="text-center mt-3">
+    <h4>Total: ₹{{ getTotal() }}</h4>
+    <button class="btn btn-success" (click)="checkout()">Proceed to Checkout</button>
+  </div>
+</div>

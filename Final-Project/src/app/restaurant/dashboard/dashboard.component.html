@@ -1,0 +1,103 @@
+<div class="container mt-4">
+
+
+  <div class="card p-3 mb-4">
+    <h4>My Restaurants</h4>
+    <ul class="list-group">
+      <li *ngFor="let restaurant of ownedRestaurants" class="list-group-item"
+          (click)="selectRestaurant(restaurant)" [class.active]="restaurant === selectedRestaurant" style="cursor:pointer">
+        {{ restaurant.name }}
+      </li>
+    </ul>
+  </div>
+
+
+  <div *ngIf="selectedRestaurant" class="card p-3 mb-4">
+    <h3>{{ selectedRestaurant.name }}</h3>
+    <p><strong>Cuisine:</strong> {{ selectedRestaurant.cuisineType }}</p>
+    <p><strong>Address:</strong> {{ selectedRestaurant.address }}</p>
+    <p><strong>Phone:</strong> {{ selectedRestaurant.phoneNumber }}</p>
+  </div>
+
+  <div *ngIf="selectedRestaurant" class="card p-3 mb-4">
+    <h4>Menu Items</h4>
+
+    <form [formGroup]="menuForm" (ngSubmit)="addOrUpdateMenu()" class="mb-3">
+      <input type="text" formControlName="name" placeholder="Item Name" required class="form-control mb-2"/>
+      <input type="text" formControlName="description" placeholder="Description" class="form-control mb-2"/>
+      <input type="number" formControlName="price" placeholder="Price" required class="form-control mb-2"/>
+      <label>
+        <input type="checkbox" formControlName="isAvailable"/> Available
+      </label>
+      <button class="btn btn-primary mt-2">{{ editingMenuItemId ? 'Update' : 'Add' }} Item</button>
+    </form>
+
+
+    <table class="table table-bordered" *ngIf="menuItems.length">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Available</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of menuItems">
+          <td>{{ item.name }}</td>
+          <td>{{ item.description }}</td>
+          <td>₹{{ item.price }}</td>
+          <td>{{ item.isAvailable ? 'Yes' : 'No' }}</td>
+          <td>
+            <button class="btn btn-sm btn-info" (click)="editMenuItem(item)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteMenuItem(item.menuItemId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div *ngIf="selectedRestaurant" class="card p-3 mb-4">
+    <h4>Orders</h4>
+    <table class="table table-bordered" *ngIf="orders.length">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Items</th>
+          <th>Update Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.orderId }}</td>
+          <td>{{ order.orderDate | date:'short' }}</td>
+          <td>{{ order.deliveryStatus }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let item of order.orderdetail">
+                {{ item.itemName }} x {{ item.quantity }} = ₹{{ item.price * item.quantity }}
+              </li>
+            </ul>
+          </td>
+          <td>
+            <select #statusSelect class="form-select" [value]="order.deliveryStatus">
+              <option>Pending</option>
+              <option>Preparing</option>
+              <option>Delivered</option>
+              <option>Cancelled</option>
+            </select>
+            <button class="btn btn-sm btn-success mt-1"
+                    (click)="updateOrderStatus(order.orderId, statusSelect.value)">
+              Update
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

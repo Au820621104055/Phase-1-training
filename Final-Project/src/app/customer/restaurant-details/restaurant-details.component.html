@@ -1,0 +1,34 @@
+<div class="restaurant-menu-page container position-relative">
+
+  <div class="go-cart-top">
+    <button class="btn btn-primary" (click)="goToCart()">
+      Go to Cart ({{ cart.length }})
+    </button>
+  </div>
+
+  <h2 class="text-center mb-4">{{ restaurantName || 'Restaurant Menu' }}</h2>
+
+
+  <div *ngIf="menu.length === 0" class="text-center text-muted">
+    <p>No menu available.</p>
+  </div>
+
+  <div class="menu-list row">
+    <div *ngFor="let item of menu" class="col-md-6 col-lg-4 mb-4">
+      <div class="menu-item card shadow-sm h-100 p-3">
+
+        <img 
+          [src]="item.image || '/assets/images/menu-placeholder.jpg'" 
+          alt="{{ item.name }}" 
+          class="card-img-top mb-3 menu-img">
+
+        <h3 class="menu-title">{{ item.name }}</h3>
+        <p class="menu-desc">{{ item.description }}</p>
+        <p class="menu-price">Price: ₹{{ item.price }}</p>
+        <button class="btn btn-success w-100" (click)="addToCart(item)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

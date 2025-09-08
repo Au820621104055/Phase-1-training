@@ -1,0 +1,20 @@
+<div *ngIf="orders.length; else noOrders">
+  <div *ngFor="let order of orders" class="order-card">
+    <h3>Order #{{ order.orderId }} - {{ order.restaurantName }}</h3>
+    <p>Customer: {{ order.customerName }}</p>
+    <p>Order Date: {{ order.orderDate | date:'medium' }}</p>
+    <p>Status: {{ order.deliveryStatus }}</p>
+
+    <ul>
+      <li *ngFor="let item of order.items">
+        {{ item.name }} x {{ item.quantity }} - {{ item.price | currency }}
+      </li>
+    </ul>
+
+    <p *ngIf="order.payment">Payment: {{ order.payment.amount | currency }} ({{ order.payment.status }})</p>
+  </div>
+</div>
+
+<ng-template #noOrders>
+  <p>No orders found.</p>
+</ng-template>

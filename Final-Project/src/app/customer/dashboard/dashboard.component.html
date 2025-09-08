@@ -1,0 +1,83 @@
+<div class="dashboard-background">
+  <div class="dashboard-overlay container py-4">
+
+    <!-- Loading Spinner -->
+    <div *ngIf="loading" class="text-center mt-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div *ngIf="!loading" class="d-flex justify-content-end mb-4 flex-wrap">
+      <button class="btn btn-success me-2 mb-2" (click)="goToRestaurants()">
+        🍴 View Restaurants
+      </button>
+      <button class="btn btn-secondary me-2 mb-2" (click)="goToCart()">
+        🛒 View Cart
+      </button>
+      <button class="btn btn-warning mb-2" (click)="logout()">
+        🚪 Log Out
+      </button>
+    </div>
+
+    <!-- Customer Info -->
+    <div *ngIf="!loading && customer" class="card shadow-lg p-4 mb-4">
+      <h2 class="mb-3 text-primary">Welcome, {{ customer.fullName }} 👋</h2>
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <p><strong>Email:</strong> {{ customer.email }}</p>
+          <p><strong>Phone:</strong> {{ customer.phoneNumber }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- If no customer -->
+    <div *ngIf="!loading && !customer" class="alert alert-warning mt-4">
+      No customer details found.
+    </div>
+
+    <!-- Recent Orders -->
+    <div *ngIf="recentOrders.length > 0" class="mb-4">
+      <h4 class="mb-3 text-success">📦 Recent Orders</h4>
+      <div class="row">
+        <div *ngFor="let order of recentOrders" class="col-md-6 col-lg-4 mb-3">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <h5 class="card-title">Order #{{ order.orderId }}</h5>
+              <p class="card-text mb-1"><strong>Status:</strong> {{ order.deliveryStatus }}</p>
+              <p class="card-text">
+                <small class="text-muted">{{ order.orderDate | date:'medium' }}</small>
+              </p>
+
+              <!-- Order Items -->
+              <ul class="list-group list-group-flush mt-2">
+                <li *ngFor="let item of order.items" class="list-group-item d-flex justify-content-between">
+                  <span>{{ item.name }} (x{{ item.quantity }})</span>
+                  <span>₹{{ item.price }}</span>
+                </li>
+              </ul>
+
+              <!-- Total Payment -->
+              <div *ngIf="order.payment" class="mt-2">
+                <strong>Total Paid:</strong> ₹{{ order.payment.amount }} ({{ order.payment.paymentMethod }})
+              </div>
+            </div>
+
+            <!-- Footer with delivery status -->
+            <div class="card-footer bg-light">
+              <span class="badge bg-primary">{{ order.deliveryStatus }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- If no orders -->
+    <div *ngIf="!loading && recentOrders.length === 0" class="alert alert-info mt-3">
+      No orders found. Start ordering delicious food! 🍔
+    </div>
+
+  </div>
+</div>

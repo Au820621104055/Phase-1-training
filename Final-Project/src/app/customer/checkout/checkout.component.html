@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Checkout</h2>
+
+  <div *ngIf="cart.length === 0" class="alert alert-info">
+    Your cart is empty. Add items to proceed!
+  </div>
+
+  <div *ngIf="cart.length > 0">
+    <div class="card shadow p-3 mb-4">
+      <h4>Delivery Details</h4>
+      <div class="mb-3">
+        <label class="form-label">Address</label>
+        <textarea class="form-control" [(ngModel)]="address" placeholder="Enter delivery address"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Special Instructions (Optional)</label>
+        <textarea class="form-control" [(ngModel)]="specialInstructions" placeholder="E.g., no onion, extra spicy"></textarea>
+      </div>
+    </div>
+
+    <div class="card shadow p-3 mb-4">
+      <h4>Order Summary</h4>
+      <ul class="list-group mb-3">
+        <li *ngFor="let c of cart" class="list-group-item d-flex justify-content-between align-items-center">
+          {{ c.item.name }} x {{ c.qty }}
+          <span>₹{{ c.item.price * c.qty }}</span>
+        </li>
+      </ul>
+      <h5 class="text-end">Total: ₹{{ total }}</h5>
+    </div>
+
+    <div class="text-center">
+      <button class="btn btn-success btn-lg px-5" (click)="proceedToPayment()">Proceed to Payment</button>
+    </div>
+  </div>
+</div>

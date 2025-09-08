@@ -1,0 +1,26 @@
+<div class="container mt-4 position-relative">
+
+  <h2 class="text-center mb-3">Restaurants</h2>
+  <hr>
+
+  <div class="position-absolute" style="top: 10px; right: 10px;">
+    <button class="btn btn-primary" (click)="goToCart()">
+      Go to Cart
+    </button>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let restaurant of restaurants" class="col-md-4 mb-3">
+      <div class="card h-100">
+        <img [src]="restaurant.image" class="card-img-top" alt="{{ restaurant.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ restaurant.name }}</h5>
+          <p class="card-text">{{ restaurant.phoneNumber }}</p>
+          <button class="btn btn-primary w-100" (click)="viewDetails(restaurant.restaurantId)">
+            View Menu
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

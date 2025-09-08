@@ -1,0 +1,46 @@
+<div class="container mt-4">
+  <div class="card p-3">
+    <h4>Assigned Orders</h4>
+    <table class="table table-bordered" *ngIf="assignedOrders.length">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Items</th>
+          <th>Update Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of assignedOrders">
+          <td>{{ order.orderId }}</td>
+          <td>{{ order.orderDate | date:'short' }}</td>
+          <td>{{ order.deliveryStatus }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let item of order.items">
+                {{ item.name }} x {{ item.quantity }} = ₹{{ item.price * item.quantity }}
+              </li>
+            </ul>
+          </td>
+          <td>
+            <select #statusSelect class="form-select" [value]="order.deliveryStatus">
+              <option>Pending</option>
+              <option>Picked Up</option>
+              <option>Delivered</option>
+              <option>Cancelled</option>
+            </select>
+            <button class="btn btn-sm btn-success mt-1" 
+                    (click)="updateStatus(order.orderId, statusSelect.value)">
+              Update
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="!assignedOrders.length" class="alert alert-info mt-3">
+      No assigned orders at the moment.
+    </div>
+  </div>
+</div>

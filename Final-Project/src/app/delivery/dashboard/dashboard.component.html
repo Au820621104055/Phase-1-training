@@ -1,0 +1,45 @@
+<div class="container mt-4">
+  <div class="card p-4">
+    <h3>Welcome, {{staffname}}</h3>
+    <p>Manage your assigned orders and update their status here.</p>
+    <a routerLink="/delivery/order-status" class="btn btn-primary mt-3">
+      View Assigned Orders
+    </a>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <div class="card p-3">
+    <h4>Assigned Orders</h4>
+    <table class="table table-bordered" *ngIf="deliveredOrders.length">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of deliveredOrders">
+          <td>{{ order.orderId }}</td>
+          <td>{{ order.orderDate | date:'short' }}</td>
+          <td>{{ order.deliveryStatus }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let item of order.items">
+                {{ item.name }} x {{ item.quantity }} = ₹{{ item.price * item.quantity }}
+              </li>
+            </ul>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="!deliveredOrders.length" class="alert alert-info mt-3">
+      No Delivery completed at the moment.
+    </div>
+  </div>
+</div>
+
