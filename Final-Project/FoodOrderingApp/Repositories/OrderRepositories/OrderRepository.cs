@@ -32,26 +32,7 @@ namespace FoodOrderingApp.Repositories.OrderRepositories
             return orderDto;
         }
 
-        //public async Task<IEnumerable<OrderDTO>?> GetById(int restaurantId)
-        //{
-        //    var orders = await _context.Orders
-        //        .Where(u => u.RestaurantId == restaurantId)
-        //        .ToListAsync(); 
-
-        //    if (orders == null || !orders.Any()) return null;
-
-        //    var orderDTOs = orders.Select(order => new OrderDTO
-        //    {
-        //        OrderId = order.OrderId,
-        //        CustomerId = order.CustomerId,
-        //        RestaurantId = order.RestaurantId,
-        //        OrderDate = order.OrderDate,
-        //        DeliveryPersonId = order.DeliveryPersonId,
-        //        DeliveryStatus = order.DeliveryStatus
-        //    });
-
-        //    return orderDTOs;
-        //}
+        
 
         public async Task<IEnumerable<OrderDTO>?> GetById(int restaurantId)
         {
