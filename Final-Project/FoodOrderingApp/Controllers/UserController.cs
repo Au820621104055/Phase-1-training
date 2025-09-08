@@ -13,7 +13,7 @@ namespace FoodOrderingApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize(Roles = "Customer")]
+    [Authorize(Roles = "Customer")]
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _customerRepo;
@@ -87,62 +87,7 @@ namespace FoodOrderingApp.Controllers
             }));
         }
 
-        //[Authorize(Roles = "Customer")]
-        //[HttpPost("order")]
-        //public async Task<ActionResult<OrderResponseDto>> PlaceOrder(CreateOrderDto dto)
-        //{
-        //    if (dto == null || dto.Items == null || !dto.Items.Any())
-        //        return BadRequest("Invalid order data");
-
-        //    var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-        //    if (userIdClaim == null) return Unauthorized();
-        //    int userId = int.Parse(userIdClaim.Value);
-
-        //    var restaurant = _context.Restaurants.Find(dto.RestaurantId);
-        //    if (restaurant == null) return NotFound("Restaurant not found");
-
-        //    var order = new Order
-        //    {
-        //        CustomerId = userId,
-        //        RestaurantId = dto.RestaurantId,
-        //        OrderDate = DateTime.UtcNow,
-        //        DeliveryStatus = "Pending"
-        //    };
-
-        //    var orderItems = dto.Items.Select(i =>
-        //    {
-        //        var menuItem = _context.MenuItems.Find(i.MenuItemId);
-        //        if (menuItem == null) throw new Exception($"MenuItem {i.MenuItemId} not found");
-        //        return new OrderItem
-        //        {
-        //            MenuItemId = i.MenuItemId,
-        //            Quantity = i.Quantity,
-        //            Price = menuItem.Price
-        //        };
-        //    }).ToList();
-
-        //    var placedOrder = await _customerRepo.PlaceOrder(order, orderItems);
-
-        //    var response = new OrderResponseDto
-        //    {
-        //        OrderId = placedOrder.OrderId,
-        //        RestaurantName = restaurant.Name,
-        //        OrderDate = placedOrder.OrderDate,
-        //        Status = placedOrder.DeliveryStatus,
-        //        Items = orderItems.Select(oi =>
-        //        {
-        //            var menuItem = _context.MenuItems.Find(oi.MenuItemId)!;
-        //            return new OrderItemDetailDto
-        //            {
-        //                ItemName = menuItem.Name,
-        //                Quantity = oi.Quantity,
-        //                Price = menuItem.Price
-        //            };
-        //        }).ToList()
-        //    };
-
-        //    return Ok(response);
-        //}
+        
 
         [Authorize(Roles = "Customer")]
         [HttpPost("order")]
@@ -180,22 +125,22 @@ namespace FoodOrderingApp.Controllers
 
             var placedOrder = await _customerRepo.PlaceOrder(order, orderItems);
 
-            // ✅ Calculate total amount
+            
             var totalAmount = orderItems.Sum(oi => oi.Price * oi.Quantity);
 
-            // ✅ Create Payment immediately
+            
             var payment = new Payment
             {
                 OrderId = placedOrder.OrderId,
                 Amount = totalAmount,
-                PaymentMethod = "CARD", // or from dto.PaymentMethod if passed along
+                PaymentMethod = "CARD",
                 PaymentStatus = "Paid",
                 PaymentDate = DateTime.UtcNow
             };
 
             await _customerRepo.MakePayment(payment);
 
-            // ✅ Response including payment info
+            
             var response = new OrderResponseDto
             {
                 OrderId = placedOrder.OrderId,
