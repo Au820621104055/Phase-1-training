@@ -11,7 +11,7 @@ namespace FoodOrderingApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize(Roles = "DeliveryStaff")]
+    [Authorize(Roles = "DeliveryStaff")]
     public class DeliveryController : ControllerBase
     {
         private readonly IDeliveryRepository _deliveryRepo;
