@@ -32,6 +32,11 @@ namespace FoodOrderingApp.Repositories.OrderRepositories
             return orderDto;
         }
 
+<<<<<<< HEAD:Final-Project/FoodOrderingApp/FoodOrderingApp/FoodOrderingApp/Repositories/OrderRepositories/OrderRepository.cs
+=======
+        
+
+>>>>>>> f21a1374f903ab4f90ebd7e3eee121f319558383:Final-Project/FoodOrderingApp/Repositories/OrderRepositories/OrderRepository.cs
         public async Task<IEnumerable<OrderDTO>?> GetById(int restaurantId)
         {
             var orders = await _context.Orders
