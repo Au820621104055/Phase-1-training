@@ -7,6 +7,7 @@ import { MenuItem } from '../models/menuitem.interface';
 import { Order } from '../models/order.interface';
 import { Payment } from '../models/payment.interface';
 import { orderReponce } from '../models/orderResponce.interface';
+import { deliveryorder } from '../models/deliveryorder.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,14 @@ import { orderReponce } from '../models/orderResponce.interface';
 export class CustomerService {
   private apiUrl = 'https://localhost:7279/api/User';
   private orderApi = 'https://localhost:7279/api/Order/my-orders'; 
+  private baseUrl = 'http://localhost:7279/api/delivery';
 
-  recentorder:orderReponce[]=[];
+  recentorder:Order[]=[];
 
 
   constructor(private http: HttpClient) {}
 
-    setOrders(orders: orderReponce[]) {
+    setOrders(orders: Order[]) {
     this.recentorder=orders;
   }
 
@@ -51,7 +53,25 @@ export class CustomerService {
     return this.http.post<Payment>(`${this.apiUrl}/payment`, payment);
   }
 
+  cancelOrder(orderId: number) {
+  const token = localStorage.getItem('authToken');
+  const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
+  return this.http.put(`https://localhost:7279/api/Order/cancel/${orderId}`,{headers:this.getAuthHeaders()});
+}
+
   trackOrder(orderId: number): Observable<string> {
     return this.http.get<string>(`${this.apiUrl}/order/${orderId}/status`);
+  }
+
+  getAvailableOrders(): Observable<deliveryorder[]> {
+    return this.http.get<deliveryorder[]>(`${this.baseUrl}/available`);
+  }
+
+  acceptOrder(orderId: number, deliveryPersonId: number): Observable<any> {
+    return this.http.post(`${this.baseUrl}/accept/${orderId}/${deliveryPersonId}`, {});
+  }
+
+  rejectOrder(orderId: number): Observable<any> {
+    return this.http.post(`${this.baseUrl}/reject/${orderId}`, {});
   }
 }

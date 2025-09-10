@@ -7,5 +7,5 @@ export interface OrderItem {
   menuItemId: number;
   price: number;
   quantity: number;
-  name?: string;
+  itemName?: string;
 }

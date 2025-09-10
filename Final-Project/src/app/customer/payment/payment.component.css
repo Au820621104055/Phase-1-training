@@ -1,23 +1,47 @@
-.payment-container {
-  max-width: 400px;
-  margin: 30px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
+/* Full-page gradient background */
+.payment-bg {
+  background: linear-gradient(135deg, #1e1e2f, #2c2c54);
+  min-height: 100vh;
+}
+
+/* Dark card for payment */
+.dark-card {
+  background-color: #2b2b3a; /* dark gray card */
+  color: #ffffff;
   border-radius: 10px;
-  background: #fafafa;
-  text-align: center;
 }
 
-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #4caf50;
-  color: white;
-  border: none;
+/* Dark input fields */
+.dark-input {
+  background-color: #3a3a50;
+  color: #ffffff;
+  border: 1px solid #555;
+}
+
+/* Placeholder text color */
+.dark-input::placeholder {
+  color: #cccccc;
+}
+
+/* Dark list-group items */
+.dark-list-group {
+  background-color: transparent;
+  padding: 0;
+}
+
+.dark-list-item {
+  background-color: #3a3a50;
+  color: #ffffff;
+  border: 1px solid #555;
   border-radius: 5px;
-  cursor: pointer;
+  margin-bottom: 5px;
 }
 
-button:hover {
-  background: #45a049;
+/* Navbar overrides */
+.navbar-dark .navbar-nav .nav-link {
+  color: #ffffff;
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+  font-weight: bold;
 }

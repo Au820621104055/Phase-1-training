@@ -1,7 +1,8 @@
 <div class="my-background">
   <div class="login-card text-center">
     <h2>Login</h2>
-    <form (ngSubmit)="onSubmit()">
+    <form #loginForm="ngForm" (ngSubmit)="loginForm.valid && onSubmit()">
+      
       <div class="mb-3 text-start">
         <label for="email" class="form-label">Email</label>
         <input
@@ -12,7 +13,13 @@
           class="form-control"
           placeholder="Enter your email"
           required
+          email
+          #email="ngModel"
         />
+        <div class="text-danger small" *ngIf="email.invalid && email.touched">
+          <span *ngIf="email.errors?.['required']">Email is required</span>
+          <span *ngIf="email.errors?.['email']">Enter a valid email</span>
+        </div>
       </div>
 
       <div class="mb-3 text-start">
@@ -25,14 +32,22 @@
           class="form-control"
           placeholder="Enter your password"
           required
+          minlength="5"
+          #password="ngModel"
         />
+        <div class="text-danger small" *ngIf="password.invalid && password.touched">
+          <span *ngIf="password.errors?.['required']">Password is required</span>
+          <span *ngIf="password.errors?.['minlength']">Password must be at least 6 characters</span>
+        </div>
       </div>
 
       <div *ngIf="error" class="alert alert-danger py-2">
         {{ error }}
       </div>
 
-      <button type="submit" class="btn btn-primary w-100 mb-3">Login</button>
+      <button type="submit" class="btn btn-primary w-100 mb-3" [disabled]="loginForm.invalid">
+        Login
+      </button>
 
       <p>
         Don't have an account?

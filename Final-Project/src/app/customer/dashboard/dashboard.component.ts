@@ -49,8 +49,8 @@ export class DashboardComponent implements OnInit {
     
         this.http.get<orderReponce[]>(this.orderApi, { headers }).subscribe({
         next: (res) => {
-          this.recentOrders = res;
-          this.service.setOrders(res);   
+          this.recentOrders = res.sort(
+          (a, b) => new Date(b.orderDate).getTime() - new Date(a.orderDate).getTime());
         },
         error: (err) => console.error('Failed to fetch orders', err)
       });
@@ -70,6 +70,7 @@ export class DashboardComponent implements OnInit {
 
   logout() {
     this.auth.logout();
+    localStorage.clear();
     this.router.navigate(['/auth/login']);
   }
 }

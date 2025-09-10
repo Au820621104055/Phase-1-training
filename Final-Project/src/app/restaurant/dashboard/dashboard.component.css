@@ -1,109 +1,32 @@
-
-.card {
-  background: linear-gradient(135deg, #ffe6e6, #fff0f0); /* gradient background */
-  border-radius: 20px;
-  padding: 25px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-}
-
-.card h4 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #0f0e0e;
-  margin-bottom: 20px;
-  border-bottom: 3px solid #5e4949;
-  display: inline-block;
-  padding-bottom: 5px;
-}
-
-
-.card input[type="text"],
-.card input[type="number"] {
-  width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 12px;
-  border-radius: 12px;
-  border: none;
-  background: #fff;
-  box-shadow: inset 3px 3px 8px rgba(0,0,0,0.05),
-              inset -3px -3px 8px rgba(255,255,255,0.7);
-  transition: box-shadow 0.3s, transform 0.2s;
-}
-
-.card input[type="text"]:focus,
-.card input[type="number"]:focus {
-  outline: none;
-  box-shadow: 0 0 10px #ff4d4d;
-  transform: scale(1.02);
-}
-
-.card label {
-  display: flex;
-  align-items: center;
-  font-weight: 500;
-  color: #555;
-}
-
-.card input[type="checkbox"] {
-  margin-right: 8px;
-  accent-color: #ff4d4d;
-}
-
-.card button {
-  background: #e93333;
-  color: #fff;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
-}
-
-.card button:hover {
-  background: #ff1a1a;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-
-.table th, .table td {
-  text-align: center;
-  padding: 12px 15px;
-}
-
-.table thead {
-  background: #ff4d4d;
-  color: #fff;
+.dashboard h3, 
+.dashboard h4, 
+.dashboard h5 {
   font-weight: 600;
 }
 
-.table tbody tr:nth-child(even) {
-  background: #ffe6e6;
+.dashboard .card {
+  border-radius: 12px;
 }
 
-.table tbody tr:hover {
-  background: #ffcccc;
-  cursor: pointer;
+.dashboard .list-group-item {
+  border: none;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s;
 }
 
-.card p {
-  color: #aa0000;
-  font-style: italic;
-  font-weight: 500;
-  margin-top: 15px;
+.dashboard .list-group-item:hover {
+  background-color: #f8f9fa;
+}
+
+.dashboard .list-group-item.active {
+  background-color: #0d6efd !important;
+  color: white !important;
+}
+
+.dashboard .btn {
+  border-radius: 8px;
+}
+
+.dashboard select.form-select {
+  border-radius: 8px;
 }

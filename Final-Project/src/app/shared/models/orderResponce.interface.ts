@@ -17,4 +17,5 @@ export interface orderReponce{
     items: OrderItem[];
     orderdetail:OrderDetail[];
     payment?: any;
+    totalAmount:number;
 }

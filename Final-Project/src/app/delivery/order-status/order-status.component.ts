@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DeliveryService } from '../../shared/services/delivery.service';
-import { Order } from '../../shared/models/order.interface';
+import { DeliveryService, DeliveryOrder } from '../../shared/services/delivery.service';
 
 @Component({
   selector: 'app-order-status',
@@ -8,7 +7,8 @@ import { Order } from '../../shared/models/order.interface';
   styleUrls: ['./order-status.component.css']
 })
 export class OrderStatusComponent implements OnInit {
-  assignedOrders: Order[] = [];
+  assignedOrders: DeliveryOrder[] = [];
+  statusOptions = ['Picked Up', 'On The Way', 'Delivered', 'Cancelled','	On The Way']; 
 
   constructor(private deliveryService: DeliveryService) { }
 
@@ -16,19 +16,17 @@ export class OrderStatusComponent implements OnInit {
     this.loadAssignedOrders();
   }
 
-  /** Load assigned orders */
   loadAssignedOrders() {
     this.deliveryService.getAssignedOrders().subscribe({
       next: orders => this.assignedOrders = orders,
-      error: err => console.error(err)
+      error: err => console.error('Error loading assigned orders:', err)
     });
   }
 
-  /** Update delivery status */
   updateStatus(orderId: number, status: string) {
     this.deliveryService.updateOrderStatus(orderId, status).subscribe({
       next: () => this.loadAssignedOrders(),
-      error: err => console.error(err)
+      error: err => console.error('Error updating status:', err)
     });
   }
 }

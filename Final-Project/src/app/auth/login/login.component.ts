@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
 import { LoginRequest } from '../../shared/models/auth.interface';
@@ -8,7 +8,7 @@ import { LoginRequest } from '../../shared/models/auth.interface';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent  {
+export class LoginComponent {
   credentials: LoginRequest = { email: '', password: '' };
   error: string = '';
 

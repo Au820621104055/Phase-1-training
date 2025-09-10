@@ -61,4 +61,18 @@ export class DashboardComponent implements OnInit {
       error: (err) => console.error('Error updating status:', err)
     });
   }
+
+updateRestaurantStatus(restaurantId: number, newStatus: string) {
+  console.log('Updating restaurant ID:', restaurantId);
+  this.http.patch(
+    `${this.apiUrl}/restaurants/${restaurantId}/status?status=${newStatus}`,
+    {}
+  ).subscribe({
+    next: () => {
+      alert('Restaurant status updated successfully!');
+      this.loadRestaurants();
+    },
+    error: (err) => console.error('Error updating restaurant status:', err)
+  });
+}
 }

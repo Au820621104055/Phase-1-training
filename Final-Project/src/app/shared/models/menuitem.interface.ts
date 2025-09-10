@@ -11,4 +11,5 @@ export interface MenuItem {
   restaurant: Restaurant;
   orderItems: OrderItem[];
   image?:string;
+  
 }

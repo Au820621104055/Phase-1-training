@@ -65,9 +65,9 @@ export class AuthService {
     return localStorage.getItem('role');
   }
 
-  getUserId(): number | null {
+  getUserId(): number {
     const id = localStorage.getItem('userId');
-    return id ? parseInt(id, 10) : null;
+    return id ? parseInt(id, 10):0;
   }
 
   getFullName(): string | null {

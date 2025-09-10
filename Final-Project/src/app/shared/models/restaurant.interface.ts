@@ -11,5 +11,5 @@ export interface Restaurant {
   owner: User;
   menuItems: MenuItem[];
   image?:string;
-  isApproved?: boolean; 
+  status?: string;
 }

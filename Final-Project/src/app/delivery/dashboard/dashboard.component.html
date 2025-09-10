@@ -1,45 +1,78 @@
 <div class="container mt-4">
-  <div class="card p-4">
-    <h3>Welcome, {{staffname}}</h3>
-    <p>Manage your assigned orders and update their status here.</p>
-    <a routerLink="/delivery/order-status" class="btn btn-primary mt-3">
-      View Assigned Orders
-    </a>
-  </div>
-</div>
+  <h2>Delivery Orders</h2>
 
-<div class="container mt-4">
-  <div class="card p-3">
-    <h4>Assigned Orders</h4>
-    <table class="table table-bordered" *ngIf="deliveredOrders.length">
+  <!-- Toggle Buttons -->
+  <div class="mb-3">
+    <button class="btn btn-primary me-2" (click)="showAvailableOrders()">Available Orders</button>
+    <button class="btn btn-secondary" (click)="showAssignedOrders()">View Assigned Orders</button>
+  </div>
+
+  <!-- Available Orders Table -->
+  <div *ngIf="isAvailableOrders">
+    <table class="table table-bordered" *ngIf="orders.length > 0; else noOrders">
       <thead>
         <tr>
           <th>Order ID</th>
+          <th>Customer</th>
+          <th>Restaurant</th>
           <th>Date</th>
           <th>Status</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let order of deliveredOrders">
+        <tr *ngFor="let order of orders">
           <td>{{ order.orderId }}</td>
-          <td>{{ order.orderDate | date:'short' }}</td>
+          <td>{{ order.customerName }}</td>
+          <td>{{ order.restaurantName }}</td>
+          <td>{{ order.orderDate  }}</td>
           <td>{{ order.deliveryStatus }}</td>
           <td>
-            <ul>
-              <li *ngFor="let item of order.items">
-                {{ item.name }} x {{ item.quantity }} = ₹{{ item.price * item.quantity }}
-              </li>
-            </ul>
-          </td>
-          <td>
+            <button class="btn btn-success btn-sm me-2" (click)="accept(order.orderId)">Accept</button>
+            <button class="btn btn-danger btn-sm" (click)="reject(order.orderId)">Reject</button>
           </td>
         </tr>
       </tbody>
     </table>
+    <ng-template #noOrders>
+      <p>No available orders at the moment.</p>
+    </ng-template>
+  </div>
 
-    <div *ngIf="!deliveredOrders.length" class="alert alert-info mt-3">
-      No Delivery completed at the moment.
-    </div>
+  <!-- Assigned Orders Table -->
+  <div *ngIf="!isAvailableOrders">
+    <table class="table table-bordered" *ngIf="assignedOrders.length > 0; else noAssignedOrders">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer</th>
+          <th>Restaurant</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Update Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of assignedOrders">
+          <td>{{ order.orderId }}</td>
+          <td>{{ order.customerName }}</td>
+          <td>{{ order.restaurantName }}</td>
+          <td>{{ order.orderDate | date:'short' }}</td>
+          <td>{{ order.deliveryStatus }}</td>
+          <td>
+            <select [(ngModel)]="order.deliveryStatus" class="form-select">
+              <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+            </select>
+            <button class="btn btn-primary btn-sm mt-1" 
+                    (click)="updateStatus(order.orderId, order.deliveryStatus)">
+              Update
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #noAssignedOrders>
+      <p>No assigned orders yet.</p>
+    </ng-template>
   </div>
 </div>
-

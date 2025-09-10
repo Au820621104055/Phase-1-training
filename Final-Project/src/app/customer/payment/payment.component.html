@@ -1,37 +1,64 @@
-<div class="container mt-5">
-  <h2 class="text-center mb-4">Payment</h2>
+<div class="payment-bg min-vh-100 p-0">
+  <div class="container mt-3">
 
-  <div class="card shadow p-3 mb-4">
-    <h4>Order Summary</h4>
-    <ul class="list-group mb-3">
-      <li *ngFor="let c of cart" class="list-group-item d-flex justify-content-between align-items-center">
-        {{ c.item.name }} x {{ c.qty }}
-        <span>₹{{ c.item.price * c.qty }}</span>
-      </li>
-    </ul>
-    <h5 class="text-end">Total: ₹{{ total }}</h5>
-  </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+      <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/">FoodieApp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" routerLink="/customer/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/customer/restaurant-list">Restaurants</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/customer/cart">Cart</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/customer/orders">Orders</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/customer/customer-dashboard">Dashboard</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-  <div class="card shadow p-3">
-    <h4>Select Payment Method</h4>
-    <select [(ngModel)]="paymentMethod" class="form-select mb-3">
-      <option value="COD">Cash on Delivery (COD)</option>
-      <option value="UPI">UPI</option>
-      <option value="Card">Credit/Debit Card</option>
-    </select>
+    <!-- Payment Content -->
+    <div class="mt-4">
+      <h2 class="text-center mb-4 text-white">Payment</h2>
 
-    <div *ngIf="paymentMethod==='UPI'" class="mb-3">
-      <p>Scan the QR or use UPI ID: <strong>example@upi</strong></p>
-    </div>
+      <!-- Order Summary -->
+      <div class="card dark-card shadow p-3 mb-4">
+        <h4 class="text-white">Order Summary</h4>
+        <ul class="list-group mb-3 dark-list-group">
+          <li *ngFor="let c of cart" class="list-group-item d-flex justify-content-between align-items-center dark-list-item">
+            {{ c.item.name }} x {{ c.qty }}
+            <span>₹{{ c.item.price * c.qty }}</span>
+          </li>
+        </ul>
+        <h5 class="text-end text-white">Total: ₹{{ total }}</h5>
+      </div>
 
-    <div *ngIf="paymentMethod==='Card'" class="mb-3">
-      <input type="text" class="form-control mb-2" placeholder="Card Number">
-      <input type="text" class="form-control mb-2" placeholder="Expiry MM/YY">
-      <input type="text" class="form-control mb-2" placeholder="CVV">
-    </div>
+      <!-- Payment Method -->
+      <div class="card dark-card shadow p-3">
+        <h4 class="text-white">Select Payment Method</h4>
+        <select [(ngModel)]="paymentMethod" class="form-select mb-3 dark-input">
+          <option value="COD">Cash on Delivery (COD)</option>
+          <option value="UPI">UPI</option>
+          <option value="Card">Credit/Debit Card</option>
+        </select>
 
-    <div class="text-center mt-3">
-      <button class="btn btn-success btn-lg px-5" (click)="pay()">Pay / Place Order</button>
+        <div *ngIf="paymentMethod==='UPI'" class="mb-3 text-white">
+          <p>Scan the QR or use UPI ID: <strong>example@upi</strong></p>
+        </div>
+
+        <div *ngIf="paymentMethod==='Card'" class="mb-3">
+          <input type="text" class="form-control mb-2 dark-input" placeholder="Card Number">
+          <input type="text" class="form-control mb-2 dark-input" placeholder="Expiry MM/YY">
+          <input type="text" class="form-control mb-2 dark-input" placeholder="CVV">
+        </div>
+
+        <div class="text-center mt-3">
+          <button class="btn btn-success btn-lg px-5" (click)="pay()">Pay / Place Order</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

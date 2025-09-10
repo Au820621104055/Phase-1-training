@@ -13,10 +13,9 @@ export class PaymentComponent implements OnInit {
   total: number = 0;
   address: string = '';
   specialInstructions: string = '';
-  paymentMethod: string = 'COD';
+  paymentMethod: string = 'COD'; // Options: COD, CARD, UPI
 
   private orderApi = 'https://localhost:7279/api/User/order';
-  private paymentApi = 'https://localhost:7279/api/User/payment';
 
   constructor(private router: Router, private http: HttpClient) {}
 
@@ -44,6 +43,11 @@ export class PaymentComponent implements OnInit {
 
     const headers = { 'Authorization': `Bearer ${token}` };
 
+    if (!this.cart.length) {
+      alert('Your cart is empty!');
+      return;
+    }
+
     const orderPayload = {
       RestaurantId: this.cart[0]?.item.restaurantId,
       Items: this.cart.map(c => ({ menuItemId: c.item.menuItemId, quantity: c.qty })),
@@ -51,35 +55,27 @@ export class PaymentComponent implements OnInit {
       Address: this.address
     };
 
-    if (this.paymentMethod === 'COD') {
-      this.http.post(this.orderApi, orderPayload, { headers }).subscribe({
-        next: () => {
-          alert('Order placed successfully with COD!');
-          localStorage.removeItem('checkoutCart');
-          localStorage.removeItem('cart');
-          this.router.navigate(['/customer']);
-        },
-        error: () => alert('Failed to place order!')
-      });
-    } else {
- 
-      this.http.post(this.orderApi, orderPayload, { headers }).subscribe({
-        next: (res: any) => {
-          const orderId = res.orderId;
-          const paymentPayload = { orderId, paymentMethod: this.paymentMethod };
+    console.log('Order Payload:', orderPayload);
 
-          this.http.post(this.paymentApi, paymentPayload, { headers }).subscribe({
-            next: () => {
-              alert(`${this.paymentMethod} payment successful!`);
-              localStorage.removeItem('checkoutCart');
-              localStorage.removeItem('cart');
-              this.router.navigate(['/customer/orders']);
-            },
-            error: () => alert('Payment failed!')
-          });
-        },
-        error: () => alert('Order failed!')
-      });
-    }
+    this.http.post(this.orderApi, orderPayload, { headers }).subscribe({
+      next: (res: any) => {
+ 
+        alert(`${this.paymentMethod === 'COD' ? 'Order placed successfully with COD!' : 'Payment successful!'}`);
+
+ 
+        localStorage.removeItem('checkoutCart');
+        localStorage.removeItem('cart');
+ 
+        if (this.paymentMethod === 'COD') {
+          this.router.navigate(['/customer']);
+        } else {
+          this.router.navigate(['/customer/orders']);
+        }
+      },
+      error: (err) => {
+        console.error('Order/Payment error:', err);
+        alert('Failed to place order or payment!');
+      }
+    });
   }
 }

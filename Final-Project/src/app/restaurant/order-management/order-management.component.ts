@@ -19,7 +19,7 @@ export class OrdersComponent implements OnChanges {
   }
 
   loadOrders() {
-    this.service.getOrdersById(this.restaurantId).subscribe({
+    this.service.getOrdersByRestaurant(this.restaurantId).subscribe({
       next: res => this.orders = res,
       error: err => console.error(err)
     });

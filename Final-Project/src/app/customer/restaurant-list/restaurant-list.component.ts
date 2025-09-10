@@ -9,7 +9,9 @@ import { Restaurant } from 'src/app/shared/models/restaurant.interface';
   styleUrls: ['./restaurant-list.component.css']
 })
 export class RestaurantListComponent implements OnInit {
-  restaurants: Restaurant[] = [];
+  restaurants: Restaurant[] = [];          
+  filteredRestaurants: Restaurant[] = []; 
+  searchTerm: string = '';                  
   loading = false;
   error = '';
 
@@ -23,11 +25,11 @@ export class RestaurantListComponent implements OnInit {
     this.loading = true;
     this.restaurantService.getAllRestaurants().subscribe({
       next: (data) => {
-
         this.restaurants = data.map((r, index) => ({
           ...r,
-          image: `/assets/images/res${index + 1}.jpg`
+          image: `/assets/images/res${index + 1}.jpg` 
         }));
+        this.filteredRestaurants = [...this.restaurants]; 
         this.loading = false;
       },
       error: () => {
@@ -37,9 +39,19 @@ export class RestaurantListComponent implements OnInit {
     });
   }
 
+  onSearchChange(value: string): void {
+    const term = value.toLowerCase().trim();
+
+    this.filteredRestaurants = this.restaurants.filter(r =>
+      r.name.toLowerCase().includes(term) ||
+      (r.cuisineType && r.cuisineType.toLowerCase().includes(term))
+    );
+  }
+
   viewDetails(id: number): void {
     this.router.navigate(['/customer/restaurant-details', id]);
   }
+
   goToCart(): void {
     this.router.navigate(['/customer/cart']);
   }

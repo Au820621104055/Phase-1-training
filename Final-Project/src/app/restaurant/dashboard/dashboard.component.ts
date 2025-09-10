@@ -1,12 +1,10 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RestaurantService } from '../../shared/services/restaurant.service';
 import { Restaurant } from 'src/app/shared/models/restaurant.interface';
 import { MenuItem } from 'src/app/shared/models/menuitem.interface';
-import { Order } from 'src/app/shared/models/order.interface';
 import { orderReponce } from 'src/app/shared/models/orderResponce.interface';
-import { Route } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,15 +18,25 @@ export class DashboardComponent implements OnInit {
   orders: orderReponce[] = [];
   menuForm: FormGroup;
   editingMenuItemId: number | null = null;
-  public resid: number | undefined = this.selectedRestaurant?.restaurantId;
+  restaurantForm: FormGroup;
+  showAddRestaurantForm = false;   
 
+  constructor(private restaurantService: RestaurantService, private fb: FormBuilder ,private service:AuthService) {
 
-  constructor(private restaurantService: RestaurantService, private fb: FormBuilder) {
     this.menuForm = this.fb.group({
       name: ['', Validators.required],
       description: [''],
       price: [0, [Validators.required, Validators.min(1)]],
+      restaurantId: [this.selectedRestaurant?.restaurantId],
       isAvailable: [true]
+    });
+
+    this.restaurantForm = this.fb.group({
+      name: ['', Validators.required],
+    address: ['', Validators.required],       
+    phoneNumber: ['', Validators.required],   
+    cuisineType: [''],
+    ownerId: [this.service.getUserId(), Validators.required]
     });
   }
 
@@ -36,12 +44,35 @@ export class DashboardComponent implements OnInit {
     this.loadOwnedRestaurants();
   }
 
-  loadOwnedRestaurants() {
-    this.restaurantService.getAllRestaurants().subscribe({
-      next: res => this.ownedRestaurants = res,
-      error: err => console.error(err)
-    });
+loadOwnedRestaurants() {
+  this.restaurantService.getMyRestaurants().subscribe({
+    next: res => this.ownedRestaurants = res,
+    error: err => console.error(err)
+  });
+}
+
+addRestaurant() {
+  if (this.restaurantForm.invalid) {
+    alert('Please fill all required fields.');
+    return;
   }
+
+  const restaurantData: Restaurant = {
+    ...this.restaurantForm.value,
+    status: 'Pending'   
+  };
+
+  this.restaurantService.submitRestaurantForValidation(restaurantData).subscribe({
+    next: () => {
+      alert('Restaurant submitted for validation! Admin will approve it shortly.');
+      this.restaurantForm.reset();
+      this.showAddRestaurantForm = false;
+      this.loadOwnedRestaurants(); // optionally show pending restaurants
+    },
+    error: err => console.error(err)
+  });
+}
+
 
   selectRestaurant(restaurant: Restaurant) {
     this.selectedRestaurant = restaurant;
@@ -49,31 +80,39 @@ export class DashboardComponent implements OnInit {
     this.loadOrders();
   }
 
-  loadMenu() {
-    if (!this.selectedRestaurant) return;
-    this.restaurantService.getMenu().subscribe({
-      next: res => this.menuItems = res,
-      error: err => console.error(err)
-    });
-  }
+loadMenu() {
+  if (!this.selectedRestaurant) return;
+  this.restaurantService.getMenuByRestaurant(this.selectedRestaurant.restaurantId).subscribe({
+    next: res => this.menuItems = res,
+    error: err => console.error(err)
+  });
+}
 
-  addOrUpdateMenu() {
-    if (!this.selectedRestaurant) return;
-    const itemData = this.menuForm.value;
-    if (this.editingMenuItemId) {
-      this.restaurantService.updateMenuItem(this.editingMenuItemId, itemData)
-        .subscribe({
-          next: () => { this.loadMenu(); this.resetMenuForm(); },
-          error: err => console.error(err)
-        });
-    } else {
-      this.restaurantService.addMenuItem(itemData)
-        .subscribe({
-          next: () => { this.loadMenu(); this.resetMenuForm(); },
-          error: err => console.error(err)
-        });
-    }
+addOrUpdateMenu() {
+  if (!this.selectedRestaurant) return;
+
+  const itemData = {
+    ...this.menuForm.value,
+    restaurantId: this.selectedRestaurant.restaurantId  
+  };
+
+  console.log("Payload to API:", itemData);
+
+  if (this.editingMenuItemId) {
+    this.restaurantService.updateMenuItem(this.selectedRestaurant.restaurantId, itemData)
+      .subscribe({
+        next: () => { this.loadMenu(); this.resetMenuForm(); },
+        error: err => console.error(err)
+      });
+  } else {
+    this.restaurantService.addMenuItem(itemData)
+      .subscribe({
+        next: () => { this.loadMenu(); this.resetMenuForm(); },
+        error: err => console.error(err)
+      });
   }
+}
+
 
   editMenuItem(item: MenuItem) {
     this.editingMenuItemId = item.menuItemId;
@@ -100,17 +139,14 @@ export class DashboardComponent implements OnInit {
   }
 
 loadOrders() {
-    if (!this.selectedRestaurant) return;
-    const resid = this.selectedRestaurant.restaurantId;
-    this.restaurantService.getOrdersById(resid).subscribe({
-      next: res => {
-        this.orders = res;
-      },
-      error: err => console.error(err)
-    });
-    //this.router.navigate(['/restaurant/order${this.selectedRestaurant}']);
-    
-  }
+  debugger
+  if (!this.selectedRestaurant) return;
+  const resid = this.selectedRestaurant.restaurantId;
+  this.restaurantService.getOrdersByRestaurant(resid).subscribe({
+    next: res => this.orders = res,
+    error: err => console.error(err)
+  });
+}
 
   updateOrderStatus(orderId: number, status: string) {
     this.restaurantService.updateOrderStatus(orderId, status).subscribe({
@@ -118,5 +154,10 @@ loadOrders() {
       error: err => console.error(err)
     });
   }
-}
 
+  onStatusChange(orderId: number, event: Event) {
+  const selectElement = event.target as HTMLSelectElement;
+  const status = selectElement.value;
+  this.updateOrderStatus(orderId, status);
+}
+}

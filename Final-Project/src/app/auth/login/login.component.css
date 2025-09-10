@@ -1,6 +1,5 @@
-/* Full-page background */
-.my-background {
-  background-image: url('/assets/bg2.jpg'); /* Angular absolute path */
+ .my-background {
+  background-image: url('/assets/bg2.jpg');  
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -11,9 +10,8 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Glass-effect login card */
-.login-card {
-  background: rgba(255, 255, 255, 0.15); /* light transparent glass */
+ .login-card {
+  background: rgba(255, 255, 255, 0.15);  
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 15px;
@@ -32,15 +30,13 @@
   box-shadow: 0 15px 45px rgba(0,0,0,0.7);
 }
 
-/* Heading */
-.login-card h2 {
+ .login-card h2 {
   font-weight: 700;
   margin-bottom: 25px;
   color: #fff;
 }
 
-/* Inputs */
-.login-card .form-control {
+ .login-card .form-control {
   background: rgba(255, 255, 255, 0.25);
   border: none;
   color: #fff;
@@ -50,8 +46,7 @@
   color: #e0e0e0;
 }
 
-/* Button */
-.login-card .btn-primary {
+ .login-card .btn-primary {
   background-color: rgba(255, 255, 255, 0.3);
   border: none;
   color: #fff;
@@ -64,18 +59,17 @@
   color: #000;
 }
 
-/* Links */
-.login-card a {
+ .login-card a {
   color: #e0e0e0;
   text-decoration: underline;
   transition: color 0.3s ease;
 }
 
 .login-card a:hover {
-  color: #ffd700; /* gold hover effect */
+  color: #ffd700; 
 }
 
-/* Error messages */
+ 
 .login-card .alert-danger {
   background: rgba(255, 0, 0, 0.2);
   border: none;

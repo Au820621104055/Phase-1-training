@@ -34,6 +34,7 @@ export class AdminService {
     return this.http.delete<void>(`${this.apiUrl}/users/${userId}`, { headers: this.getAuthHeaders() });
   }
 
+
   updateUserStatus(userId: number, isActive: boolean): Observable<User> {
     return this.http.put<User>(
       `${this.apiUrl}/users/${userId}/status?isActive=${isActive}`,
@@ -41,4 +42,12 @@ export class AdminService {
       { headers: this.getAuthHeaders() }
     );
   }
+
+updateRestaurantStatus(restaurantId: number, newStatus: string): Observable<void> {
+  return this.http.put<void>(
+    `${this.apiUrl}/restaurants/${restaurantId}/status?status=${newStatus}`,
+    {},
+    { headers: this.getAuthHeaders() }
+  );
+}
 }

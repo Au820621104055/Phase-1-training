@@ -1,23 +1,23 @@
-<!-- Navbar -->
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
   <a class="navbar-brand fw-bold" href="#">🍔 FoodieApp</a>
 
   <div class="ms-auto d-flex align-items-center">
-    <!-- Profile icon -->
+
     <div class="profile-icon" (click)="goToDashboard()" title="Go to Dashboard">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJcAAACUCAMAAACp1UvlAAAAb1BMVEX///8jHyAAAAAgHB3p6emYmJj4+Pjm5uYhHyAPBwkGAAAdGRqDg4MbFxipqani4uLZ2dmQkJDy8vIWEhNSUVG5ubnLy8t5eXlFRUVaWlpycnKysrI+PT0MAAVjYmKgoKAwLi8oJyc1NTVraWrCwsIkCNnwAAAFF0lEQVR4nO2cXZeCOAyGhxSwLVTAosAIyof//zcu4Do6Kwq0Dc45y3M5x4v3NGmSJhm+vlZWVlZWVlZWPs8uOJyTuJRMlnFyPgS7TwvqOURZBcClRwjxJAewsujwaVG2UwKTxHqESAals/mgqp1fgmcN4UHpf8qcriPYsKpeWSEc9xOyDhmQl6p6e0L2AT/bgnyrqkPCdmlZychh3Y4sWVTVroEJqiyLUmiWdP9smqxWF4VsMVXuN9Bpujrge6lr6QOdocsCfxlZ+4lGvAvbLyErKKfcxAcoqYIFdMVs5nFZFovxZc22Yge+Je30dUp8jUhtZF1bleNqDww7IVVCSZeocGVd1I6rPbALqq5mvIgYRjaYssK5sesHUoaIupSCxBXUUJEUyro4ZiUmVILXFU/gyXLVzdgaEq/cCbV04Tn+UUvXEU2Xo6XLQdPlq19HyyrwylZ/ful1h626/oquiGvo4hGaLsWi8ApiaXjQ0oXX3Nlo6ULsIE5q4gxDAE/W10n9QrIToi4Nx0d9EYVEuY4mmHW0m6k909qHWobabTorv9POmLLailXNkASxWu3xFfsA2L252d2v63GV6B2wSKnPhJezf6Dzr6Sg+LLaN/ecpm8HXabBOtuSS1ixI5+XJVm+jKwvO53RbaISvYf5w2bCLO2GhCWa5P8STDYlyxeU1Z5YNc35oVp4zr2bMoAkkCw/5HZGnUwitiTesDnxd6FfFKdFXeuOe6lADo38KKUCqv3S6wDBPSDtT2xgg8IDdrqnHnuhY7uUD3ffDX0KwPotGNJvwjAA6of3swryEnemcMWOgQj4tbKxOfqntK5a85V1evKPj6HBdUAQiNFD/j4v+gDQ/H7euHYQdgT2b6cKmz6c8Bq3onCjmzdJ8MfdJvBvscSDCPMWPO4nQBW9t44dPSQFzH2FMC8egwIpoLm8iuf2pQFO7j+ntMiRXrab+ilZM4j9y7OB3IufwvOPa5RcGZZDeUe0YaH2j4fW4zta7z/6dRs4xHO4pRJjpmbXL9Oh4ACyTNM4TUsJ0GenoSxgydp4vLDTkYqLeJ7wvPd9FSpz08JObNbuywtd1HQXTPH5/4zZhsBedaz9BJUGI7/9YutSBQ/Mudi3zpzjvxTfpmRtdcYcz3BDndYdNWfFDo+aSeHG7uINM3cyrNSHCcOQykQ+0tiZeEVhYJdiozF7eQUxMCvyzV7GK1zbw+za7GW8QrRLsa3JkHqn0I1hmbHM+AupWe1rTULfoen5yvOgUV1686JYdX42htBatd3U5oPXFb0becHx+g6mUx86GEH1CtfpJRotCH/DNMpDN8dy+9bxc/UqbMew3L51fKbeqtbaJxxDY99Qax9nVJf6vo7WnuOoLvU9SK09x1Fd6oFCaw9tVJf6tBSlVr2hUbP+VV1KOwlT0bCjxrr9BF3qiRvjjXaDcI2+ToOYt3X+4eMi0Q5Mag2zErT6Xq8VsEuZfrt3AJZqDr43KUcQxlPtBoWdmg+u3MQKiuuD2apVgG+mYbivucl+tLkZqRu9+j7BfFWl0a8G2FHFtWMZkXxsljofdzu4kjAdAey0xRgmu+G5ZoVU0ebJgtXnEG/EHZyTHIB5001KPAaQJ2f05Q473Da15Ix1yxzDWvqRYLfiwRiXdbMNF9uY2x2OUZLlFnQUTIqffRMhGe//SvMsiY6HD3xNZGcH4eHo+N9NnJe0FSSFVeZxk/hOP/D+G9+rWVlZWVlZWfm/8g+s1E5/uQ3N2AAAAABJRU5ErkJggg==" alt="Customer Profile" />
     </div>
   </div>
 </nav>
 
-<!-- Hero Section -->
+
 <div class="hero-section text-center text-white d-flex flex-column justify-content-center align-items-center">
   <h1 class="display-4 fw-bold">Welcome to Food Ordering App</h1>
   <p class="lead">Delicious food delivered to your doorstep 🍕🍔🍟</p>
   <button class="btn btn-warning btn-lg mt-3" (click)="goToRestaurants()">Order Now</button>
 </div>
 
-<!-- Categories Section -->
+
 <div class="container mt-5">
   <h2 class="text-center mb-4">Popular Categories</h2>
   <div class="row text-center">
