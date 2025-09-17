@@ -1,43 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
-import { LoginRequest } from '../../shared/models/auth.interface';
 
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
-})
-export class LoginComponent {
-  credentials: LoginRequest = { email: '', password: '' };
-  error: string = '';
-
-  constructor(private authService: AuthService, private router: Router) {}
-
-  onSubmit(): void {
-    console.log('clicked');
-    this.authService.login(this.credentials).subscribe({
-      next: (response) => {
-        this.authService.saveAuthData(response);
-
-        const role = this.authService.getRole();
-        console.log('User role:', role);
-
-        if (role === 'Customer') {
-          this.router.navigate(['/customer']);
-        } else if (role === 'RestaurantOwner') {
-          this.router.navigate(['/restaurant/dashboard']);
-        } else if (role === 'DeliveryStaff') {
-          this.router.navigate(['/delivery/dashboard']);
-        } else if (role === 'Admin') {
-          this.router.navigate(['/admin']);
-        } else {
-          this.router.navigate(['/']);
-        }
-      },
-      error: () => {
-        this.error = 'Invalid email or password';
-      }
-    });
-  }
-}
+@Component({ selector: 'app-login', templateUrl: './login.component.html', styleUrls: ['./login.component.css'] })
+export class LoginComponent { email = ''; password = ''; error = ''; constructor(private auth: AuthService, private router: Router) {} onSubmit() { this.error = ''; this.auth.login(this.email, this.password).subscribe({ next: res => { const user = res.user; if (user?.role === 'Admin') this.router.navigate(['/admin/dashboard']); else if (user?.role === 'Restaurant') this.router.navigate(['/restaurant/dashboard']); else if (user?.role === 'Delivery') this.router.navigate(['/delivery/dashboard']); else this.router.navigate(['/customer/dashboard']); }, error: err => this.error = err?.error?.message || 'Login failed' }); } }

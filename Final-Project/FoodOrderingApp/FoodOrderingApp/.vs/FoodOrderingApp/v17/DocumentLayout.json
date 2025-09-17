@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\narendrakumar.s\\source\\repos\\FoodOrderingApp\\FoodOrderingApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{083D75E9-1CBC-40B8-9E2E-E093D6306353}|FoodOrderingApp\\FoodOrderingApp.csproj|c:\\users\\narendrakumar.s\\source\\repos\\foodorderingapp\\foodorderingapp\\foodorderingapp\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{083D75E9-1CBC-40B8-9E2E-E093D6306353}|FoodOrderingApp\\FoodOrderingApp.csproj|solutionrelative:foodorderingapp\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{083D75E9-1CBC-40B8-9E2E-E093D6306353}|FoodOrderingApp\\FoodOrderingApp.csproj|c:\\users\\narendrakumar.s\\source\\repos\\foodorderingapp\\foodorderingapp\\foodorderingapp\\controllers\\restaurantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{083D75E9-1CBC-40B8-9E2E-E093D6306353}|FoodOrderingApp\\FoodOrderingApp.csproj|solutionrelative:foodorderingapp\\controllers\\restaurantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -21,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{083D75E9-1CBC-40B8-9E2E-E093D6306353}|FoodOrderingApp\\FoodOrderingApp.csproj|c:\\users\\narendrakumar.s\\source\\repos\\foodorderingapp\\foodorderingapp\\foodorderingapp\\controllers\\deliverycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{083D75E9-1CBC-40B8-9E2E-E093D6306353}|FoodOrderingApp\\FoodOrderingApp.csproj|solutionrelative:foodorderingapp\\controllers\\deliverycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{083D75E9-1CBC-40B8-9E2E-E093D6306353}|FoodOrderingApp\\FoodOrderingApp.csproj|c:\\users\\narendrakumar.s\\source\\repos\\foodorderingapp\\foodorderingapp\\foodorderingapp\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{083D75E9-1CBC-40B8-9E2E-E093D6306353}|FoodOrderingApp\\FoodOrderingApp.csproj|solutionrelative:foodorderingapp\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{083D75E9-1CBC-40B8-9E2E-E093D6306353}|FoodOrderingApp\\FoodOrderingApp.csproj|c:\\users\\narendrakumar.s\\source\\repos\\foodorderingapp\\foodorderingapp\\foodorderingapp\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -241,11 +241,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 523,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "DeliveryController.cs",
               "DocumentMoniker": "C:\\Users\\narendrakumar.s\\source\\repos\\FoodOrderingApp\\FoodOrderingApp\\FoodOrderingApp\\Controllers\\DeliveryController.cs",
               "RelativeDocumentMoniker": "FoodOrderingApp\\Controllers\\DeliveryController.cs",
@@ -253,12 +253,11 @@
               "RelativeToolTip": "FoodOrderingApp\\Controllers\\DeliveryController.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAA4AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T09:37:05.724Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T09:37:05.724Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "MenuItemController.cs",
               "DocumentMoniker": "C:\\Users\\narendrakumar.s\\source\\repos\\FoodOrderingApp\\FoodOrderingApp\\FoodOrderingApp\\Controllers\\MenuItemController.cs",
               "RelativeDocumentMoniker": "FoodOrderingApp\\Controllers\\MenuItemController.cs",
@@ -266,12 +265,11 @@
               "RelativeToolTip": "FoodOrderingApp\\Controllers\\MenuItemController.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T01:58:17.039Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T01:58:17.039Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "OrderController.cs",
               "DocumentMoniker": "C:\\Users\\narendrakumar.s\\source\\repos\\FoodOrderingApp\\FoodOrderingApp\\FoodOrderingApp\\Controllers\\OrderController.cs",
               "RelativeDocumentMoniker": "FoodOrderingApp\\Controllers\\OrderController.cs",
@@ -279,12 +277,11 @@
               "RelativeToolTip": "FoodOrderingApp\\Controllers\\OrderController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T03:13:02.634Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-08T03:13:02.634Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "PaymentController.cs",
               "DocumentMoniker": "C:\\Users\\narendrakumar.s\\source\\repos\\FoodOrderingApp\\FoodOrderingApp\\FoodOrderingApp\\Controllers\\PaymentController.cs",
               "RelativeDocumentMoniker": "FoodOrderingApp\\Controllers\\PaymentController.cs",
@@ -292,31 +289,30 @@
               "RelativeToolTip": "FoodOrderingApp\\Controllers\\PaymentController.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAYwAoAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T02:11:06.391Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T02:11:06.391Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "RestaurantController.cs",
               "DocumentMoniker": "C:\\Users\\narendrakumar.s\\source\\repos\\FoodOrderingApp\\FoodOrderingApp\\FoodOrderingApp\\Controllers\\RestaurantController.cs",
               "RelativeDocumentMoniker": "FoodOrderingApp\\Controllers\\RestaurantController.cs",
               "ToolTip": "C:\\Users\\narendrakumar.s\\source\\repos\\FoodOrderingApp\\FoodOrderingApp\\FoodOrderingApp\\Controllers\\RestaurantController.cs",
               "RelativeToolTip": "FoodOrderingApp\\Controllers\\RestaurantController.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAgwA8AAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-07T05:34:00.328Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\narendrakumar.s\\source\\repos\\FoodOrderingApp\\FoodOrderingApp\\FoodOrderingApp\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "FoodOrderingApp\\Controllers\\AdminController.cs",
               "ToolTip": "C:\\Users\\narendrakumar.s\\source\\repos\\FoodOrderingApp\\FoodOrderingApp\\FoodOrderingApp\\Controllers\\AdminController.cs",
               "RelativeToolTip": "FoodOrderingApp\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-08T06:14:10.064Z",
               "EditorCaption": ""
@@ -331,8 +327,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAABjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T06:14:33.544Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-08T06:14:33.544Z"
             },
             {
               "$type": "Document",
@@ -344,8 +339,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Repositories\\AdminRepositories\\AdminRepository.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAF4AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T06:17:31.263Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-08T06:17:31.263Z"
             },
             {
               "$type": "Document",
@@ -357,8 +351,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Repositories\\AdminRepositories\\IAdminRepository.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAwwBAAAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T06:17:43.711Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-08T06:17:43.711Z"
             },
             {
               "$type": "Document",
@@ -370,8 +363,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Repositories\\DeliveryRepositories\\DeliveryRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T06:17:45.964Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-08T06:17:45.964Z"
             },
             {
               "$type": "Document",
@@ -383,8 +375,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Repositories\\DeliveryRepositories\\IDeliveryRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T06:17:49.171Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-08T06:17:49.171Z"
             },
             {
               "$type": "Document",
@@ -409,8 +400,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Repositories\\UserRepositories\\UserRepository.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAIwBgAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T13:03:04.127Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T13:03:04.127Z"
             },
             {
               "$type": "Document",
@@ -422,8 +412,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Repositories\\UserRepositories\\IUserRepository.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAUwAoAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T13:04:24.283Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T13:04:24.283Z"
             },
             {
               "$type": "Document",
@@ -435,8 +424,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Dto\\Order\\CreateOrderDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T06:15:53.078Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-08T06:15:53.078Z"
             },
             {
               "$type": "Document",
@@ -448,8 +436,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Controllers\\UserController.cs",
               "ViewState": "AgIAAEYAAAAAAAAAAAAAAFIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T02:11:02.168Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T02:11:02.168Z"
             },
             {
               "$type": "Document",
@@ -461,8 +448,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Models\\MenuItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T02:09:21.567Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T02:09:21.567Z"
             },
             {
               "$type": "Document",
@@ -474,8 +460,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Program.cs",
               "ViewState": "AgIAACkAAAAAAAAAAAAgwDEAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T05:33:40.302Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T05:33:40.302Z"
             },
             {
               "$type": "Document",
@@ -500,8 +485,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Repositories\\RestaurantRepositories\\IRestaurantRepository.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAhwBEAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T07:07:43.919Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T07:07:43.919Z"
             },
             {
               "$type": "Document",
@@ -513,8 +497,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Dto\\Restaurant\\UpdateStatus.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T06:47:32.093Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T06:47:32.093Z"
             },
             {
               "$type": "Document",
@@ -526,8 +509,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Context\\AppDBContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T06:13:30.26Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-08T06:13:30.26Z"
             },
             {
               "$type": "Document",
@@ -539,8 +521,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Dto\\Order\\DeliveryOrderDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-10T02:22:29.202Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-10T02:22:29.202Z"
             },
             {
               "$type": "Document",
@@ -588,8 +569,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Models\\OrderItem.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAA4wBgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T01:57:45.722Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T01:57:45.722Z"
             },
             {
               "$type": "Document",
@@ -745,8 +725,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Repositories\\OrderRepositories\\OrderRepository.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAgwDAAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T16:23:37.655Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T16:23:37.655Z"
             },
             {
               "$type": "Document",
@@ -842,8 +821,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Models\\Order.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAIwB0AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T02:06:09.549Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T02:06:09.549Z"
             },
             {
               "$type": "Document",
@@ -879,8 +857,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Models\\User.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAowBMAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T06:16:29.85Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-08T06:16:29.85Z"
             },
             {
               "$type": "Document",
@@ -952,8 +929,7 @@
               "RelativeToolTip": "FoodOrderingApp\\Models\\Payment.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAqwA0AAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T02:10:10.093Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-07T02:10:10.093Z"
             },
             {
               "$type": "Document",

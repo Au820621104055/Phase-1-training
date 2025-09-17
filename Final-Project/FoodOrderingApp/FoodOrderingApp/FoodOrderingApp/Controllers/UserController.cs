@@ -14,7 +14,7 @@ namespace FoodOrderingApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Customer")]
+    //[Authorize(Roles = "Customer")]
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _customerRepo;
@@ -81,10 +81,6 @@ namespace FoodOrderingApp.Controllers
             }));
         }
 
-<<<<<<< HEAD:Final-Project/FoodOrderingApp/FoodOrderingApp/FoodOrderingApp/Controllers/UserController.cs
-=======
-        
->>>>>>> f21a1374f903ab4f90ebd7e3eee121f319558383:Final-Project/FoodOrderingApp/Controllers/UserController.cs
 
         [Authorize(Roles = "Customer")]
         [HttpPost("order")]
@@ -122,15 +118,8 @@ namespace FoodOrderingApp.Controllers
 
             var placedOrder = await _customerRepo.PlaceOrder(order, orderItems);
 
-<<<<<<< HEAD:Final-Project/FoodOrderingApp/FoodOrderingApp/FoodOrderingApp/Controllers/UserController.cs
             var totalAmount = orderItems.Sum(oi => oi.Price * oi.Quantity);
 
-=======
-            
-            var totalAmount = orderItems.Sum(oi => oi.Price * oi.Quantity);
-
-            
->>>>>>> f21a1374f903ab4f90ebd7e3eee121f319558383:Final-Project/FoodOrderingApp/Controllers/UserController.cs
             var payment = new Payment
             {
                 OrderId = placedOrder.OrderId,
@@ -142,10 +131,6 @@ namespace FoodOrderingApp.Controllers
 
             await _customerRepo.MakePayment(payment);
 
-<<<<<<< HEAD:Final-Project/FoodOrderingApp/FoodOrderingApp/FoodOrderingApp/Controllers/UserController.cs
-=======
-            
->>>>>>> f21a1374f903ab4f90ebd7e3eee121f319558383:Final-Project/FoodOrderingApp/Controllers/UserController.cs
             var response = new OrderResponseDto
             {
                 OrderId = placedOrder.OrderId,

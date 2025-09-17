@@ -1,82 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { LoginRequest, RegisterRequest, AuthResponse } from '../models/auth.interface';
-import { jwtDecode } from 'jwt-decode';
+import { Observable, tap } from 'rxjs';
+import { User } from '../models/user.model';
 
-interface JwtPayload {
-  nameid: string;     
-  unique_name: string;  
-  role: string;         
-}
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'https://localhost:7279/api/Auth';
+  private apiBase = '/api/Auth';
 
   constructor(private http: HttpClient) {}
 
-  login(credentials: LoginRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/login`, credentials);
+  login(email: string, password: string): Observable<{ token: string; user: User }> {
+    return this.http.post<{ token: string; user: User }>(`${this.apiBase}/login`, { email, password })
+      .pipe(tap(res => {
+        if (res?.token) {
+          localStorage.setItem('token', res.token);
+          localStorage.setItem('user', JSON.stringify(res.user));
+        }
+      }));
   }
 
-  register(user: RegisterRequest): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/register`, user);
+  register(payload: any): Observable<any> {
+    return this.http.post(`${this.apiBase}/register`, payload);
   }
 
-  logout(): void {
-    localStorage.clear();
-  }
-
-  saveAuthData(response: AuthResponse): void {
-  localStorage.setItem('authToken', response.token);
-
-  try {
-    const decoded: any = jwtDecode(response.token);
-    console.log('Decoded JWT payload:', decoded);
-
-    const role =
-      decoded.role ||
-      decoded.roles ||
-      decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-    const name =
-      decoded.name ||
-      decoded.unique_name ||
-      decoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'] ||
-      '';
-    const userId =
-      decoded.nameid ||
-      decoded.userId ||
-      decoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
-
-    if (role) localStorage.setItem('role', role);
-    if (name) localStorage.setItem('fullName', name);
-    if (userId) localStorage.setItem('userId', userId);
-
-  } catch (e) {
-    console.error('Failed to decode JWT:', e);
-  }
-}
-
-
-  getRole(): string | null {
-    return localStorage.getItem('role');
-  }
-
-  getUserId(): number {
-    const id = localStorage.getItem('userId');
-    return id ? parseInt(id, 10):0;
-  }
-
-  getFullName(): string | null {
-    return localStorage.getItem('fullName');
-  }
-
-  isLoggedIn(): boolean {
-  const token = localStorage.getItem('authToken');
-  console.log('Auth token in storage:', token);
-  return !!token;
-}
+  logout() { localStorage.removeItem('token'); localStorage.removeItem('user'); }
+  getToken(): string | null { return localStorage.getItem('token'); }
+  getUser(): User | null { const u = localStorage.getItem('user'); return u ? JSON.parse(u) : null; }
+  isLoggedIn(): boolean { return !!this.getToken(); }
 }
